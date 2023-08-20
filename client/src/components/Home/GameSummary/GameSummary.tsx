@@ -1,7 +1,7 @@
 import { RootState } from "../../../store"
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { updateGameSession } from "../../../slices/eventSlice"
+import { resetGameSession } from "../../../slices/eventSlice"
 
 interface GameStatus {
   gameOver: boolean
@@ -18,7 +18,7 @@ const GameSummary = ({gameOver, setGameOver}: GameStatus) => {
   const map = useSelector((state: RootState) => state.event.map)
 
    const resetGame = (): void => {
-    dispatch(updateGameSession({ map: 'River-Bend'}))
+    dispatch(resetGameSession())
     setGameOver(!gameOver); 
   }
 

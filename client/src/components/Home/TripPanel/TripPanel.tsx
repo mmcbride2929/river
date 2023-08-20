@@ -1,8 +1,8 @@
 import React from 'react'
 import MapDropDown from '../MapDropDown/MapDropDown'
 import './TripPanel.css'
-import { updateGameSession } from '../../../slices/eventSlice'
-import { useDispatch } from 'react-redux'
+import { resetGameSession, updateGameSession } from '../../../slices/eventSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 interface GameStatus {
@@ -13,6 +13,9 @@ interface GameStatus {
 const TripPanel = ({gameOver, setGameOver}: GameStatus) => {
 
   const dispatch = useDispatch()
+
+  const fishCaught = useSelector((state: RootState) => state.event.fishCaught)
+  const largestFish = useSelector((state: RootState) => state.event.largestFish)
 
   const startGame = (event: React.FormEvent<HTMLFormElement>): void => {
   event.preventDefault()
@@ -51,17 +54,11 @@ const TripPanel = ({gameOver, setGameOver}: GameStatus) => {
     }
 
     generateFishLengths()
-    console.log(fishArray);
-    if (fishArray.length > 0) {
-      dispatch(updateGameSession({fishCaught : fishArray.length,
+    
+    dispatch(updateGameSession({fishCaught : fishArray.length,
         largestFish : largestFish
-       }))
-    } else {
-      dispatch(updateGameSession({fishCaught : 0,
-        largestFish : 0
-       }))
-    }
-
+    }))
+     
   }
 
   return (

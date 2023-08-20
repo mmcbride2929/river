@@ -12,8 +12,6 @@ const initialState: EventState = {
   map: 'River-Bend',
   fishCaught: 0,
   largestFish: 0,
-  
-  // bait: 'worms',
 }
 
 const eventSlice = createSlice({
@@ -28,11 +26,12 @@ const eventSlice = createSlice({
       
       // state.bait = action.payload.bait || state.bait
     },
+    resetGameSession: () => initialState,
   },
 })
 
 // the actions calling the state's change
-export const { updateGameSession } = eventSlice.actions
+export const { updateGameSession, resetGameSession } = eventSlice.actions
 
 // what changes the state
 export default eventSlice.reducer
