@@ -1,4 +1,3 @@
-import * as React from 'react'
 import './ImageContainer.css'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store'
@@ -8,6 +7,7 @@ import mouthSpotImage from '../../../assets/mouth-spot.jpg'
 import abandonedSpotImage from '../../../assets/abandoned-spot.jpg'
 
 const ImageContainer = () => {
+
   const selectedMap = useSelector((state: RootState) => state.event.map)
 
   const getImageSource = () => {

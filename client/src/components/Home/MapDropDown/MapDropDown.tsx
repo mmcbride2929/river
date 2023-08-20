@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { updateGameSession } from '../../../slices/eventSlice'
 import { useDispatch } from 'react-redux'
+import './MapDropDown.css'
 
 const MapDropDown: React.FC = () => {
   type MapOption = 'River-Bend' | 'River-Mouth' | 'Abandoned-River'
@@ -16,7 +17,7 @@ const MapDropDown: React.FC = () => {
   }
 
   return (
-    <select value={map} onChange={handleMapChange}>
+    <select value={map} onChange={handleMapChange} className='map-select'>
       <option value="River-Bend">River-Bend</option>
       <option value="River-Mouth">River-Mouth</option>
       <option value="Abandoned-River">Abandoned-River</option>
